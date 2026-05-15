@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h2>Add Employee</h2>
+        </div>
+
+        <div class="card-body">
+            <form th:action="@{/employees-ui/save}"
+                  th:object="${employee}"
+                  method="post">
+
+				<input type="hidden" th:field="*{id}">
+				
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input type="text"
+                           th:field="*{name}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email"
+                           th:field="*{email}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Department</label>
+                    <input type="text"
+                           th:field="*{department}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Position</label>
+                    <input type="text"
+                           th:field="*{position}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Salary</label>
+                    <input type="number"
+                           step="0.01"
+                           th:field="*{salary}"
+                           class="form-control"
+                           required>
+                </div>
+
+				<div class="mb-3">
+				    <label>Date of Joining</label>
+				    <input type="date"
+				           name="dateOfJoining"
+				           th:value="${employee.dateOfJoining}"
+				           class="form-control"
+				           required>
+				</div>
+
+                <button type="submit"
+                        class="btn btn-success">
+                    Save Employee
+                </button>
+
+                <a href="/employees-ui"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
